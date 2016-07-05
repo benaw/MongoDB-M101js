@@ -1,5 +1,6 @@
 /*
 
+
 Homework Description:
 
 In completing this exercise, you will find the following lesson helpful as a refresher on the $or 
@@ -125,8 +126,14 @@ function queryDocument(options) {
            I urge you to test your query in the Mongo shell first and adapt it to fit
            the syntax for constructing query documents in this application.
         */
+
+ query['$or'] = [ {"overview":{"$regex": "options.overview","$options":"i"} } , {"tag_list":{"$regex": "options.overview","$options":"i"}}] ;
+
+
+	};
     }
 
+	console.log("The query at this point is bens:" + JSON.stringify(query));	
     if ("milestones" in options) {
         query["milestones.source_description"] =
             {"$regex": options.milestones, "$options": "i"};
